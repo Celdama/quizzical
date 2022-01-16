@@ -23,7 +23,11 @@ const Answer = ({ correctAnswer, incorrectAnswers }) => {
   return (
     <div>
       {answers.map((answer) => {
-        return <p className={answer.correct ? 'green' : ''}>{answer.answer}</p>;
+        return (
+          <span className={answer.correct ? 'green' : ''}>
+            {answer.answer}{' '}
+          </span>
+        );
       })}
     </div>
   );

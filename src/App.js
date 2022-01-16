@@ -1,3 +1,4 @@
+import QAndA from './components/Q&A';
 import { useState } from 'react';
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
   return (
     <div className='App'>
       {startQuiz ? (
-        <h1>Quizzz</h1>
+        <QAndA />
       ) : (
         <div>
           <h1>Quizzical</h1>

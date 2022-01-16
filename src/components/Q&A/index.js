@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Answer from './Answers/Index';
 
 const QAndA = () => {
   const [questions, setQuestions] = useState([]);
@@ -6,12 +7,34 @@ const QAndA = () => {
   useEffect(() => {
     fetch('https://opentdb.com/api.php?amount=5&category=18')
       .then((res) => res.json())
-      .then((data) => setQuestions(data.results));
+      .then((data) => setUpData(data.results));
   }, []);
 
-  console.table(questions);
+  function setUpData(data) {
+    const settingQuestion = [];
+    data.forEach((question) => {
+      settingQuestion.push({
+        question: question.question,
+        correctAnswer: question.correct_answer,
+        incorrectAnswers: question.incorrect_answers,
+      });
+    });
+    setQuestions(settingQuestion);
+  }
 
-  return <div>question answer</div>;
+  const questionsElements = questions.map((question, index) => {
+    return (
+      <div>
+        <p key={index}>{question.question}</p>
+        <Answer
+          correctAnswer={question.correctAnswer}
+          incorrectAnswers={question.incorrectAnswers}
+        />
+      </div>
+    );
+  });
+
+  return <div>{questionsElements}</div>;
 };
 
 export default QAndA;

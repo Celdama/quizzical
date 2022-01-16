@@ -14,4 +14,8 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     font-family: sans-serif;
   }
+
+  .green {
+    color: green;
+  }
 `;

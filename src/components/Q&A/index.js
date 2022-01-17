@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Answer from '../Answers/Index';
+import { Wrapper, Content } from './Q&A.styles';
 
 const QAndA = () => {
   const [questions, setQuestions] = useState([]);
@@ -24,17 +25,21 @@ const QAndA = () => {
 
   const questionsElements = questions.map((question, index) => {
     return (
-      <div>
-        <p key={index}>{question.question}</p>
+      <Content>
+        <p className='question' key={index}>
+          {question.question}
+        </p>
         <Answer
+          className='answer'
           correctAnswer={question.correctAnswer}
           incorrectAnswers={question.incorrectAnswers}
         />
-      </div>
+        <hr />
+      </Content>
     );
   });
 
-  return <div>{questionsElements}</div>;
+  return <Wrapper>{questionsElements}</Wrapper>;
 };
 
 export default QAndA;

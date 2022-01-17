@@ -34,7 +34,7 @@ const QAndA = () => {
           correctAnswer={question.correctAnswer}
           incorrectAnswers={question.incorrectAnswers}
         />
-        <hr />
+        {/* <hr /> */}
       </Content>
     );
   });

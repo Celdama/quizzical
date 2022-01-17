@@ -9,6 +9,11 @@ export const Wrapper = styled.div`
 `;
 
 export const Content = styled.div`
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 1px solid #dbdef0;
+  flex-direction: column;
+  height: 100%;
   .question {
     margin: 0 0 12px 0;
     font-family: 'Karla', sans-serif;
@@ -16,12 +21,5 @@ export const Content = styled.div`
     color: #293264;
     font-weight: bold;
     line-height: 19px;
-  }
-
-  hr {
-    height: 0;
-    margin: 10px 0;
-    width: 100%;
-    border: 0.79px solid #dbeef0;
   }
 `;

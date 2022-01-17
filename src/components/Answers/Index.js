@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Wrapper, AnswerContainer } from './Answers.styles';
 
 const Answer = ({ correctAnswer, incorrectAnswers }) => {
   const [answers, setAnswers] = useState(mergeAnswers() || 0);
@@ -21,15 +22,15 @@ const Answer = ({ correctAnswer, incorrectAnswers }) => {
   }
 
   return (
-    <div>
+    <Wrapper>
       {answers.map((answer) => {
         return (
-          <span className={answer.correct ? 'green' : ''}>
+          <AnswerContainer className={answer.correct ? 'green' : ''}>
             {answer.answer}{' '}
-          </span>
+          </AnswerContainer>
         );
       })}
-    </div>
+    </Wrapper>
   );
 };
 

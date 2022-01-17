@@ -17,10 +17,11 @@ export const GlobalStyle = createGlobalStyle`
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-color: #9e2a2b;
   }
 
   .App {
-    outline: 1px solid red;
+    background-color: #fff;
     width: 560px;
     height: 560px;
     display: flex;
@@ -30,40 +31,7 @@ export const GlobalStyle = createGlobalStyle`
     .start-quiz {
       text-align: center;
       position: relative;
-      /* overflow: hidden; */
 
-      .content {
-        overflow: hidden;
-        position: relative;
-        width: 560px;
-        height: 560px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        .yellow-blob {
-          position: absolute;
-          height: 235px;
-          width: 297px;
-          background-color: red;
-          left: 72%;
-          top: -10%;
-          border-radius: 40px 35px 34px 56px;
-          background-color: #FFFAD1;
-          transform: rotate(-128deg);
-        }
-
-        .blue-blob {
-          position: absolute;
-          height: 235px;
-          width: 297px;
-          background-color: red;
-          left: -20%;
-          bottom: -20%;
-          border-radius: 96px;
-          background-color: #DEEBF8;
-        }
 
         h1 {
           font-family: 'Karla', sans-serif;

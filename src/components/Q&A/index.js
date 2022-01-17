@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Answer from './Answers/Index';
+import Answer from '../Answers/Index';
 
 const QAndA = () => {
   const [questions, setQuestions] = useState([]);

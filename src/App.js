@@ -1,4 +1,5 @@
 import QAndA from './components/Q&A';
+import Blob from './components/Blob';
 import { useState } from 'react';
 
 function App() {
@@ -11,16 +12,16 @@ function App() {
   return (
     <div className='App'>
       {startQuiz ? (
-        <QAndA />
+        <Blob blueRight={86} blueTop={86} yellowRight={-35} yellowTop={-20}>
+          <QAndA />
+        </Blob>
       ) : (
         <div className='start-quiz'>
-          <div className='content'>
-            <div className='yellow-blob'></div>
-            <div className='blue-blob'></div>
+          <Blob blueRight={78} blueTop={80} yellowRight={-25} yellowTop={-10}>
             <h1>Quizzical</h1>
             <p>Ready to start a computer quiz ?</p>
             <button onClick={handleStartQuiz}>Start quiz</button>
-          </div>
+          </Blob>
         </div>
       )}
     </div>

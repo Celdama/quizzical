@@ -13,10 +13,14 @@ function App() {
       {startQuiz ? (
         <QAndA />
       ) : (
-        <div>
-          <h1>Quizzical</h1>
-          <p>Some description</p>
-          <button onClick={handleStartQuiz}>Start quiz</button>
+        <div className='start-quiz'>
+          <div className='content'>
+            <div className='yellow-blob'></div>
+            <div className='blue-blob'></div>
+            <h1>Quizzical</h1>
+            <p>Ready to start a computer quiz ?</p>
+            <button onClick={handleStartQuiz}>Start quiz</button>
+          </div>
         </div>
       )}
     </div>

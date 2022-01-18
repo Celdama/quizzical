@@ -7,4 +7,11 @@
 
 [DONE] actuellement, les questions (ok et pas ok), sont dans un tableau, et je les affiches via le component <Answer />, le soucis est que pour le moment la bonne réponse est toujours à l'index [0]. TROUVER UN SOLUTION POUR "MELANGER" CE TABLEAU AVANT DE RENDER LES REPONSES ?
 
-[] faire un peu de style avant de passer à la validation des questions.
+[DONE] faire un peu de style avant de passer à la validation des questions.
+
+# etape pour valider les reponses
+
+[] permettre à l'utilisateur de cliquer sur une réponse
+
+- [] la mettre en surbrillance
+- [] enregistrer son choix (isHeld ?)

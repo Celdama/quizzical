@@ -22,8 +22,8 @@ export const GlobalStyle = createGlobalStyle`
 
   .App {
     background-color: #fff;
-    width: 560px;
-    height: 660px;
+    /* width: 560px; */
+    height: 760px;
     display: flex;
     align-items: center;
     justify-content: center;

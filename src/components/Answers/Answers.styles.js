@@ -19,4 +19,6 @@ export const AnswerContainer = styled.span`
   margin: 4px 6px;
   font-family: 'Inter', sans-serif;
   color: #293264;
+
+  background-color: ${({ isHeld }) => (isHeld ? 'red' : '')};
 `;

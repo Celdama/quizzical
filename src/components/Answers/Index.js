@@ -8,9 +8,10 @@ const Answer = ({
   answersIsChecked,
 }) => {
   const setup = (element) => {
-    if (element.isHeldAndIsCorrectAfterCheck) {
-      return 'green';
-    } else if (element.isJustCorrectAfterCheck) {
+    if (
+      element.isHeldAndIsCorrectAfterCheck ||
+      element.isJustCorrectAfterCheck
+    ) {
       return 'green';
     } else if (element.isHeldAndIsIncorrect) {
       return 'red';

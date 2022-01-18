@@ -7,12 +7,27 @@ export const Wrapper = styled.div`
   /* padding: 8px 0; */
 
   .green {
-    color: green;
+    background-color: #94d7a2;
+    outline: none;
+  }
+
+  .blue {
+    background-color: paleturquoise;
+  }
+
+  .red {
+    background-color: #f8bcbc;
+    outline: none;
+    opacity: 0.6;
+  }
+
+  .neither {
+    opacity: 0.6;
   }
 `;
 
 export const AnswerContainer = styled.span`
-  border: 0.79px solid #4d5b9e;
+  outline: 0.79px solid #4d5b9e;
   font-size: 10px;
   border-radius: 8px;
   padding: 6px 4px;
@@ -20,5 +35,5 @@ export const AnswerContainer = styled.span`
   font-family: 'Inter', sans-serif;
   color: #293264;
 
-  background-color: ${({ isHeld }) => (isHeld ? 'red' : '')};
+  background-color: ${({ isHeld }) => (isHeld ? '#D6DBF5' : '')};
 `;

@@ -6,6 +6,7 @@ import { nanoid } from 'nanoid';
 const QAndA = () => {
   const [questions, setQuestions] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [answersIsChecked, setAnswersIsChecked] = useState(false);
 
   useEffect(() => {
     fetch('https://opentdb.com/api.php?amount=5&category=18')
@@ -36,6 +37,9 @@ const QAndA = () => {
       correct: true,
       answer: correct,
       isHeld: false,
+      isHeldAndIsCorrect: false,
+      isHeldAndIsIncorrect: false,
+      isJustCorrectAfterCheck: false,
     });
 
     incorrect.forEach((incorrectAnswer) => {
@@ -44,6 +48,9 @@ const QAndA = () => {
         correct: false,
         answer: incorrectAnswer,
         isHeld: false,
+        isHeldAndIsCorrectAfterCheck: false,
+        isHeldAndIsIncorrect: false,
+        isJustCorrectAfterCheck: false,
       });
     });
 
@@ -67,11 +74,30 @@ const QAndA = () => {
     setQuestions(newArray);
   }
 
+  const handleCheckAnswers = () => {
+    let newArray = [...questions];
+    newArray.forEach((element) => {
+      element.answers.forEach((answer) => {
+        if (answer.correct & answer.isHeld) {
+          answer.isHeldAndIsCorrectAfterCheck = true;
+        } else if (answer.correct) {
+          answer.isJustCorrectAfterCheck = true;
+        } else if (!answer.correct && answer.isHeld) {
+          answer.isHeldAndIsIncorrect = true;
+        }
+      });
+    });
+
+    setAnswersIsChecked(true);
+    setQuestions(newArray);
+  };
+
   const questionsElements = questions.map((question, i) => {
     return (
       <Content key={question.questionId}>
         <p className='question'>{question.question}</p>
         <Answer
+          answersIsChecked={answersIsChecked}
           className='aswer'
           questionId={question.questionId}
           handleUserAnswer={handleUserAnswer}
@@ -84,7 +110,7 @@ const QAndA = () => {
   return (
     <Wrapper>
       {questionsElements}
-      <button>Check Answers</button>
+      <button onClick={handleCheckAnswers}>Check Answers</button>
     </Wrapper>
   );
 };

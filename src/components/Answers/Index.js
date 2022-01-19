@@ -1,6 +1,5 @@
 import React from 'react';
 import { Wrapper, AnswerContainer } from './Answers.styles';
-import { decodeText } from '../../helpers';
 
 const Answer = ({
   answers,
@@ -30,7 +29,7 @@ const Answer = ({
         className={answersIsChecked ? setupClassName(answer) : ''}
         onClick={() => handleUserAnswer(id, questionId)}
       >
-        {decodeText(answer.answer)}{' '}
+        {answer.answer}{' '}
       </AnswerContainer>
     );
   });

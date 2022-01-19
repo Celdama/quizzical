@@ -21,7 +21,7 @@ const QAndA = () => {
     data.forEach((question, i) => {
       settingQuestion.push({
         questionId: nanoid(),
-        question: question.question,
+        question: decodeText(question.question),
         answers: mergeAnswers(
           question.correct_answer,
           question.incorrect_answers
@@ -37,7 +37,7 @@ const QAndA = () => {
     merged.push({
       id: nanoid(),
       correct: true,
-      answer: correct,
+      answer: decodeText(correct),
       isHeld: false,
       isHeldAndIsCorrect: false,
       isHeldAndIsIncorrect: false,
@@ -48,7 +48,7 @@ const QAndA = () => {
       merged.push({
         id: nanoid(),
         correct: false,
-        answer: incorrectAnswer,
+        answer: decodeText(incorrectAnswer),
         isHeld: false,
         isHeldAndIsCorrectAfterCheck: false,
         isHeldAndIsIncorrect: false,
@@ -99,7 +99,7 @@ const QAndA = () => {
   const questionsElements = questions.map((question, i) => {
     return (
       <Content key={question.questionId}>
-        <p className='question'>{decodeText(question.question)}</p>
+        <p className='question'>{question.question}</p>
         <Answer
           answersIsChecked={answersIsChecked}
           className='aswer'

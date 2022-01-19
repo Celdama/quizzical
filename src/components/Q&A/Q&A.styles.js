@@ -32,7 +32,7 @@ export const ContentResult = styled.div`
   p {
     font-family: 'Inter', sans-serif;
     color: var(--darkBlue);
-    font-weight: 700;
+    font-weight: 800;
   }
 `;
 

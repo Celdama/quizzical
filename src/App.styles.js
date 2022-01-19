@@ -10,7 +10,7 @@ export const Wrapper = styled.main`
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   height: 860px;
 
-  p {
+  .intro {
     font-family: 'Inter', sans-serif;
     color: var(--darkBlue);
     font-weight: 300;

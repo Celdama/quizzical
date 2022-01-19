@@ -20,7 +20,7 @@ function App() {
         <>
           <Blob blueRight={78} blueTop={80} yellowRight={-25} yellowTop={-10}>
             <TitleApp>Quizzical</TitleApp>
-            <p>Ready to start a computer quiz ?</p>
+            <p className='intro'>Ready to start a computer quiz ?</p>
             <StartBtn onClick={handleStartQuiz}>Start quiz</StartBtn>
           </Blob>
         </>

@@ -4,36 +4,16 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-  /* padding: 8px 0; */
-
-  .green {
-    background-color: #94d7a2;
-    outline: none;
-  }
-
-  .blue {
-    background-color: paleturquoise;
-  }
-
-  .red {
-    background-color: #f8bcbc;
-    outline: none;
-    opacity: 0.6;
-  }
-
-  .neither {
-    opacity: 0.6;
-  }
 `;
 
 export const AnswerContainer = styled.span`
-  outline: 0.79px solid #4d5b9e;
+  outline: 0.79px solid var(--medBlue);
   font-size: 10px;
   border-radius: 8px;
   padding: 6px 4px;
   margin: 4px 6px;
   font-family: 'Inter', sans-serif;
-  color: #293264;
+  color: var(--darkBlue);
 
-  background-color: ${({ isHeld }) => (isHeld ? '#D6DBF5' : '')};
+  background-color: ${({ isHeld }) => (isHeld ? 'var(--grayBlue)' : '')};
 `;

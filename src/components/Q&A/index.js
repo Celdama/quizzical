@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Answer from '../Answers/Index';
-import { Wrapper, Content } from './Q&A.styles';
+import { Wrapper, Content, ContentResult, Btn } from './Q&A.styles';
 import { nanoid } from 'nanoid';
 
 const QAndA = () => {
@@ -118,16 +118,13 @@ const QAndA = () => {
   return (
     <Wrapper>
       {questionsElements}
-
       {!answersIsChecked ? (
-        <button className='btn' onClick={handleCheckAnswers}>
-          Check Answers
-        </button>
+        <Btn onClick={handleCheckAnswers}>Check Answers</Btn>
       ) : (
-        <div className='display-result'>
+        <ContentResult>
           <p>You scored {correctAnswers}/5 correct answers</p>
-          <button onClick={playAgain}>Play again</button>
-        </div>
+          <Btn onClick={playAgain}>Play again</Btn>
+        </ContentResult>
       )}
     </Wrapper>
   );

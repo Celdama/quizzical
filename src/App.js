@@ -13,7 +13,7 @@ function App() {
   return (
     <Wrapper>
       {startQuiz ? (
-        <Blob blueRight={86} blueTop={86} yellowRight={-35} yellowTop={-20}>
+        <Blob blueRight={86} blueTop={86} yellowRight={-25} yellowTop={-20}>
           <QAndA />
         </Blob>
       ) : (

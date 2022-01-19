@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   overflow: hidden;
   position: relative;
   width: 560px;
-  height: 760px;
+  height: 860px;
   display: flex;
   flex-direction: column;
   justify-content: center;

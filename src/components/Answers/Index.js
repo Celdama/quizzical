@@ -1,5 +1,6 @@
 import React from 'react';
 import { Wrapper, AnswerContainer } from './Answers.styles';
+import { decodeText } from '../../helpers';
 
 const Answer = ({
   answers,
@@ -7,7 +8,7 @@ const Answer = ({
   handleUserAnswer,
   answersIsChecked,
 }) => {
-  const setup = (element) => {
+  const setupClassName = (element) => {
     if (
       element.isHeldAndIsCorrectAfterCheck ||
       element.isJustCorrectAfterCheck
@@ -21,14 +22,15 @@ const Answer = ({
   };
 
   const answersElements = answers.map((answer) => {
+    const { id, isHeld } = answer;
     return (
       <AnswerContainer
-        key={answer.id}
-        isHeld={answer.isHeld}
-        className={answersIsChecked ? setup(answer) : ''}
-        onClick={() => handleUserAnswer(answer.id, questionId)}
+        key={id}
+        isHeld={isHeld}
+        className={answersIsChecked ? setupClassName(answer) : ''}
+        onClick={() => handleUserAnswer(id, questionId)}
       >
-        {answer.answer}{' '}
+        {decodeText(answer.answer)}{' '}
       </AnswerContainer>
     );
   });

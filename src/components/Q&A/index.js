@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { nanoid } from 'nanoid';
 import Answer from '../Answers/Index';
 import { Wrapper, Content, ContentResult, Btn } from './Q&A.styles';
-import { nanoid } from 'nanoid';
+import { decodeText } from '../../helpers';
 
 const QAndA = () => {
   const [questions, setQuestions] = useState([]);
@@ -10,7 +11,7 @@ const QAndA = () => {
   const [answersIsChecked, setAnswersIsChecked] = useState(false);
 
   useEffect(() => {
-    fetch('https://opentdb.com/api.php?amount=5&category=18')
+    fetch('https://opentdb.com/api.php?amount=5&category=18&encode=base64')
       .then((res) => res.json())
       .then((data) => setUpData(data.results));
   }, [reloadGame]);
@@ -77,14 +78,15 @@ const QAndA = () => {
 
   const handleCheckAnswers = () => {
     let newArray = [...questions];
-    newArray.forEach((element) => {
-      element.answers.forEach((answer) => {
-        if (answer.correct & answer.isHeld) {
+    newArray.forEach(({ answers }) => {
+      answers.forEach((answer) => {
+        const { correct, isHeld } = answer;
+        if (correct & isHeld) {
           answer.isHeldAndIsCorrectAfterCheck = true;
           setCorrectAnswers((prevCorrectAnswers) => prevCorrectAnswers + 1);
-        } else if (answer.correct) {
+        } else if (correct) {
           answer.isJustCorrectAfterCheck = true;
-        } else if (!answer.correct && answer.isHeld) {
+        } else if (!correct && isHeld) {
           answer.isHeldAndIsIncorrect = true;
         }
       });
@@ -97,7 +99,7 @@ const QAndA = () => {
   const questionsElements = questions.map((question, i) => {
     return (
       <Content key={question.questionId}>
-        <p className='question'>{question.question}</p>
+        <p className='question'>{decodeText(question.question)}</p>
         <Answer
           answersIsChecked={answersIsChecked}
           className='aswer'

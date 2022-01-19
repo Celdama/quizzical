@@ -5,14 +5,15 @@ import { nanoid } from 'nanoid';
 
 const QAndA = () => {
   const [questions, setQuestions] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [reloadGame, setReloadGame] = useState(0);
+  const [correctAnswers, setCorrectAnswers] = useState(0);
   const [answersIsChecked, setAnswersIsChecked] = useState(false);
 
   useEffect(() => {
     fetch('https://opentdb.com/api.php?amount=5&category=18')
       .then((res) => res.json())
       .then((data) => setUpData(data.results));
-  }, []);
+  }, [reloadGame]);
 
   function setUpData(data) {
     const settingQuestion = [];
@@ -80,6 +81,7 @@ const QAndA = () => {
       element.answers.forEach((answer) => {
         if (answer.correct & answer.isHeld) {
           answer.isHeldAndIsCorrectAfterCheck = true;
+          setCorrectAnswers((prevCorrectAnswers) => prevCorrectAnswers + 1);
         } else if (answer.correct) {
           answer.isJustCorrectAfterCheck = true;
         } else if (!answer.correct && answer.isHeld) {
@@ -107,10 +109,26 @@ const QAndA = () => {
     );
   });
 
+  const playAgain = () => {
+    setReloadGame((prevReload) => prevReload + 1);
+    setAnswersIsChecked(false);
+    setCorrectAnswers(0);
+  };
+
   return (
     <Wrapper>
       {questionsElements}
-      <button onClick={handleCheckAnswers}>Check Answers</button>
+
+      {!answersIsChecked ? (
+        <button className='btn' onClick={handleCheckAnswers}>
+          Check Answers
+        </button>
+      ) : (
+        <div className='display-result'>
+          <p>You scored {correctAnswers}/5 correct answers</p>
+          <button onClick={playAgain}>Play again</button>
+        </div>
+      )}
     </Wrapper>
   );
 };

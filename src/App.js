@@ -1,6 +1,7 @@
 import QAndA from './components/Q&A';
 import Blob from './components/Blob';
 import { useState } from 'react';
+import { Wrapper, TitleApp, StartBtn } from './App.styles';
 
 function App() {
   const [startQuiz, setStartQuiz] = useState(false);
@@ -10,7 +11,7 @@ function App() {
   };
 
   return (
-    <div className='App'>
+    <Wrapper>
       {startQuiz ? (
         <Blob blueRight={86} blueTop={86} yellowRight={-35} yellowTop={-20}>
           <QAndA />
@@ -18,13 +19,13 @@ function App() {
       ) : (
         <div className='start-quiz'>
           <Blob blueRight={78} blueTop={80} yellowRight={-25} yellowTop={-10}>
-            <h1>Quizzical</h1>
+            <TitleApp>Quizzical</TitleApp>
             <p>Ready to start a computer quiz ?</p>
-            <button onClick={handleStartQuiz}>Start quiz</button>
+            <StartBtn onClick={handleStartQuiz}>Start quiz</StartBtn>
           </Blob>
         </div>
       )}
-    </div>
+    </Wrapper>
   );
 }
 
